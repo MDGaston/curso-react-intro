@@ -1,0 +1,98 @@
+.todoItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 5px 50px 0px #1E1E1F26;
+    background-color: #FAFAFA;
+    width: 327px;
+    height: 124px;
+    margin-top: 24px;
+    border-radius: 10px;
+    box-sizing: border-box; /* Add this line */
+}
+
+.todoItem p{
+    font-style: 🇲🇸 ;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    position: relative;
+}
+
+.todoItem_p--complete{
+    text-decoration: line-through;
+}
+
+.Icon {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    font-size: 24px;
+    font-weight: bold;
+    /* background-color: #CCC; */
+  }
+
+  .Icon-check {
+    margin-left: 6px;
+    left: 12px;
+    color: gray;
+  }
+  .Icon-check:hover {
+    color: #4caf50;
+  }
+  .Icon-check--active {
+    color: #4caf50;
+  }
+
+.todoItem_completed{
+    font-size: 50px;
+    display: flex;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.todoItem_delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 50%;
+    border: 2px solid #1E1E1F;
+    background-color: lightsteelblue;
+    margin-right: -10px;
+    margin-bottom: 110px;
+    color: black;
+    font-weight: 1000;
+    font-size: 25px;
+    cursor: pointer;
+    position: relative; /* Add this line */
+    
+}
+
+.todoItem_delete::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 1px solid #1E1E1F;
+    border-radius: 50%;
+    pointer-events: none; /* Add this line */
+}
+
+.todoItem_delete:hover::before {
+    border: 3px solid #1E1E1F;
+}
+
+.todoItem_delete:hover {
+    color: red;
+}
+

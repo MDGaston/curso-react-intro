@@ -1,0 +1,18 @@
+h1 {
+    width: 327px;
+    height: 58px;
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
+    padding: 48px;
+    color: #1E1E1F;
+    font-style: 🇲🇸 ;
+    font-weight: 500;
+    line-height: 29.26px;
+    display: block;
+    margin: auto;
+}
+
+span {
+    font-weight: 700;
+}
