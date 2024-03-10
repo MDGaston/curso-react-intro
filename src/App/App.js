@@ -1,10 +1,11 @@
-import { TodoCounter } from "./TodoCounter";
-import { TodoSearch } from "./TodoSearch";
-import { TodoList } from "./TodoList";
-import { TodoItem } from "./TodoItem";
-import { CreateTodoButton } from "./CreateTodoButton";
+import { TodoCounter } from "../TodoCounter/TodoCounter";
+import { TodoSearch } from "../TodoSearch/TodoSearch";
+import { TodoList } from "../TodoList/TodoList";
+import { TodoItem } from "../TodoItem/TodoItem";
+import { CreateTodoButton } from "../CreateTodoButton/CreateTodoButton";
 import React from "react";
 import "./App.css";
+import { useLocalStorage } from "./useLocalStorage";
 
 // const defaultTodos = [
 //   { text: "Cortar cebolla", completed: false },
@@ -16,20 +17,11 @@ import "./App.css";
 
 // localStorage.removeItem('TODOS_V1');
 
-
 function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  let parsedTodos;
-  if(!localStorageTodos){
-    localStorage.setItem('TODOS_V1',JSON.stringify([]));
-    parsedTodos = [];
-  }else{
-    parsedTodos =  JSON.parse(localStorageTodos);
-  }
+    
+  const [todos, setTodos] = useLocalStorage('TODOS_V1',[]);
 
   const [searchValue, setSearchValue] = React.useState("");
-  const [todos, setTodos] = React.useState(parsedTodos);
-
   //Contador de todos completados
   const completedTodos = todos.filter(
     todo => !!todo.completed
@@ -43,18 +35,13 @@ function App() {
     return todoText.includes(searchText);
   });
 
-  //Funcion que actualiza el estado y LocalStorage
-  const saveTodos = (newTodos)=>{
-    localStorage.setItem('TODOS_V1',JSON.stringify(newTodos));
-    setTodos(newTodos); 
-  }
 
   //Funcion que actualiza el estado
   const completeTodo = (text)=>{
     const newtodos = [...todos];
     const todoIndex = newtodos.findIndex((todo) => todo.text === text);
     newtodos[todoIndex].completed = !newtodos[todoIndex].completed;
-    saveTodos(newtodos);
+    setTodos(newtodos);
   };
 
   //Funcion para borrar todos
@@ -62,7 +49,7 @@ function App() {
     const newtodos = [...todos];
     const todoIndex = newtodos.findIndex((todo) => todo.text === text);
     newtodos.splice(todoIndex, 1);
-    saveTodos(newtodos);
+    setTodos(newtodos);
   }
 
   console.log("los usuario escriben: ", searchValue);
