@@ -1,12 +1,9 @@
-import { TodoCounter } from "../TodoCounter/TodoCounter";
-import { TodoSearch } from "../TodoSearch/TodoSearch";
-import { TodoList } from "../TodoList/TodoList";
-import { TodoItem } from "../TodoItem/TodoItem";
-import { CreateTodoButton } from "../CreateTodoButton/CreateTodoButton";
 import React from "react";
 import "./App.css";
 import { useLocalStorage } from "./useLocalStorage";
+import { AppUI } from "./AppUI";
 
+// localStorage.removeItem('TODOS_V1');
 // const defaultTodos = [
 //   { text: "Cortar cebolla", completed: false },
 //   { text: "Tomar curso de React", completed: false },
@@ -15,11 +12,11 @@ import { useLocalStorage } from "./useLocalStorage";
 // ];
 // localStorage.setItem('TODOS_V1',JSON.stringify(defaultTodos));
 
-// localStorage.removeItem('TODOS_V1');
+
 
 function App() {
     
-  const [todos, setTodos] = useLocalStorage('TODOS_V1',[]);
+  const {item: todos, saveItem: setTodos, loading, error} = useLocalStorage('TODOS_V1',[]);
 
   const [searchValue, setSearchValue] = React.useState("");
   //Contador de todos completados
@@ -55,24 +52,17 @@ function App() {
   console.log("los usuario escriben: ", searchValue);
 
   return (
-    <>
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-
-      <TodoList>
-        {searchedTodos.map((todo) => (
-          <TodoItem
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete = {()=>completeTodo(todo.text)}
-            onDelete = {()=>deleteTodo(todo.text)}
-          />
-        ))}
-      </TodoList>
-
-      {<CreateTodoButton />}
-    </>
+    <AppUI
+      loading={loading}
+      error={error}
+      deleteTodo={deleteTodo}
+      completedTodos={completedTodos}
+      totalTodos={totalTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      completeTodo={completeTodo}
+    />
   );
 }
 
