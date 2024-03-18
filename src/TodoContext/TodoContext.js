@@ -4,8 +4,9 @@ const TodoContext = React.createContext();
 
 function TodoProvider({children}){
     const {item: todos, saveItem: setTodos, loading, error} = useLocalStorage('TODOS_V1',[]);
-
     const [searchValue, setSearchValue] = React.useState("");
+    const [openModal, setOpenModal] = React.useState(false);
+
     //Contador de todos completados
     const completedTodos = todos.filter(
       todo => !!todo.completed
@@ -18,7 +19,6 @@ function TodoProvider({children}){
       const searchText = searchValue.toLowerCase();
       return todoText.includes(searchText);
     });
-  
   
     //Funcion que actualiza el estado
     const completeTodo = (text)=>{
@@ -48,7 +48,9 @@ function TodoProvider({children}){
             completeTodo, 
             deleteTodo, 
             todos, 
-            setTodos
+            setTodos,
+            openModal,
+            setOpenModal
             }}>
             {children}
         </TodoContext.Provider>
