@@ -1,0 +1,76 @@
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    padding: 33px 40px;
+    width: 90%;
+    max-width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 50px 0px #1E1E1F26;
+}
+
+label{
+    color: #1E1E1F;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 26px;
+    text-align: center;
+}
+
+textarea{
+    background-color: #F9FBFC;
+    min-height: 100px;
+    padding: 12px;
+    height: 96px;
+    width: calc(100% - 24px);
+    border-radius: 10px;
+    border: 2px solid #202329;
+    box-shadow: 0p 5px 50px 0px rgb(32, 35, 41, 0.25);
+    color: #1E1E1F;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+textarea::placeholder{
+    color: #A5A5A5;
+    font-weight: 400;
+}
+
+textarea:focus{
+    outline-color: #61DAFA;
+}
+
+.TodoForm-buttonContainer{
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.TodoForm-button{
+    background-color: white;
+    color: black;
+    border-radius: 10em;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid black;
+    box-shadow: 0 0 0 0 black;
+    margin-top: 10px;
+    padding: 10px 20px 10px 20px;
+}
+
+.TodoForm-button:hover {
+    transform: translateY(-4px) translateX(-2px);
+    box-shadow: 2px 5px 0 0 black;
+};
+
+.TodoForm-button:active {
+    transform: translateY(2px) translateX(1px);
+    box-shadow: 0 0 0 0 black;
+};

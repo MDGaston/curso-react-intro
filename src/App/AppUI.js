@@ -8,6 +8,7 @@ import { EmptyTodos } from "../EmptyTodos/EmptyTodos";
 import { TodoError } from "../TodoError/TodoError";
 import { TodoLoading } from "../TodoLoading/TodoLoading";
 import { Modal } from "../Modal/Modal";
+import { TodoForm } from "../TodoForm/TodoForm";
 import { TodoContext } from "../TodoContext/TodoContext";
 
 function AppUI() {
@@ -39,7 +40,7 @@ function AppUI() {
       
       {openModal && (
         <Modal>
-          <button onClick={() => setOpenModal(false)}>X</button>
+          <TodoForm/>
         </Modal>
       )}
       
