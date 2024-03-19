@@ -10,9 +10,10 @@ import { TodoLoading } from "../TodoLoading/TodoLoading";
 import { Modal } from "../Modal/Modal";
 import { TodoForm } from "../TodoForm/TodoForm";
 import { TodoContext } from "../TodoContext/TodoContext";
+import { TodoNoResult } from "../TodoNoResult/TodoNoResult";
 
 function AppUI() {
-  const {loading, error, searchedTodos, completeTodo, deleteTodo, openModal, setOpenModal} = React.useContext(TodoContext);
+  const {loading, error, searchedTodos, completeTodo, deleteTodo, openModal,searchValue} = React.useContext(TodoContext);
   return (
       
     <>
@@ -22,7 +23,8 @@ function AppUI() {
       <TodoList>
         {loading && <TodoLoading />}
         {error && <TodoError />}
-        {!loading && !error && searchedTodos.length === 0 && <EmptyTodos />}
+        {(!loading && searchValue.length > 0 && searchedTodos.length === 0) && <TodoNoResult />}
+        {(!loading && searchValue.length === 0 && searchedTodos.length === 0) && <EmptyTodos />}
 
         {searchedTodos.map((todo) => (
           <TodoItem
