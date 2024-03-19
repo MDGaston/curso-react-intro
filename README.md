@@ -1,6 +1,8 @@
 # Repositorio del Curso de Introducción a React.js en Platzi
 
-En este repositorio encontrarás el código final despues de realizar todas las clases del [Curso de Introducción a React.js](https://platzi.com/reactjs). 
+En este repositorio encontrarás el código final despues de realizar todas las clases del [Curso de Introducción a React.js](https://platzi.com/reactjs).
+
+Puedes acceder a la web mediante este link : (https://mdgaston.github.io/curso-react-intro/).
 
 ## Getting Started with Create React App
 
