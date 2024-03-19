@@ -19,6 +19,16 @@ function TodoProvider({children}){
       const searchText = searchValue.toLowerCase();
       return todoText.includes(searchText);
     });
+
+    //Funcion que aniade un todo
+    const addTodo = (text)=>{
+      const newTodos = [...todos];
+      newTodos.push({
+        completed: false,
+        text
+      });
+      setTodos(newTodos);
+    };
   
     //Funcion que actualiza el estado
     const completeTodo = (text)=>{
@@ -50,7 +60,8 @@ function TodoProvider({children}){
             todos, 
             setTodos,
             openModal,
-            setOpenModal
+            setOpenModal,
+            addTodo
             }}>
             {children}
         </TodoContext.Provider>
